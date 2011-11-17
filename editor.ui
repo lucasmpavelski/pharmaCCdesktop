@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>176</height>
+    <height>182</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,5 +62,57 @@
   </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pid</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>46</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>name</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>phone</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>200</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>save()</slot>
+ </slots>
 </ui>

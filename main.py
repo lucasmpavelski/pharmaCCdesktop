@@ -57,8 +57,19 @@ class Main(QtGui.QMainWindow):
 
        self.ui.list.addTopLevelItem(item)
        self.ui.list.setCurrentItem(item)
-       p.save()
-       self.ui.editor.edit(item.prov)
+       #p.save()
+       self.ui.editor.edit(item)
+
+
+    def on_actionEdit_Provider_triggered(self,checked=None):
+        if checked is None: return
+
+        item = self.ui.list.currentItem()
+        if not item : 
+            return
+        
+        self.ui.editor.edit(item)
+
 
 def main():
     pharma.initDB()

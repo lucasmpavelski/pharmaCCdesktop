@@ -1,4 +1,4 @@
 #!/bin/sh
 
-pykdeuic4 -o windowUi.py window.ui
-pykdeuic4 -o editorUi.py editor.ui
+pyuic4 window.ui -o windowUi.py
+pyuic4 editor.ui -o editorUi.py
