@@ -15,6 +15,8 @@ class Provider (object) :
     """
 
     def __init__ (self, pid, name, phone) :
+      self.new = True
+
       self.pid = pid
       self.name = name
       self.phone = phone
@@ -23,9 +25,16 @@ class Provider (object) :
       return "Provider: " + self.name + ", phone:" + self.phone
 
     def save (self) :
+      self.new = False
+      print "save " + self.name
+      allproviders.append(self)
+
+    def update (self) :
+      print "update " + self.name
       allproviders.append(self)
 
     def delete (self) :
+      print "delete " + self.name
       allproviders.remove(self)
 
     @staticmethod
@@ -38,6 +47,7 @@ def initDB() :
                        Provider(1, "nha1", "65654"),
                        Provider(2, "nha2", "54622"),
                        Provider(3, "nha3", "34654")])
+  for p in allproviders : p.new = False
 
 
 def main() :

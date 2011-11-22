@@ -25,13 +25,31 @@ class editor(QtGui.QWidget):
         self.show()
 
     def save (self) :
-        self.item.prov.pid = unicode(self.ui.pid.text())
+        self.item.prov.pid = int(unicode(self.ui.pid.text()))
         self.item.prov.name = unicode(self.ui.name.text())
         self.item.prov.phone = unicode(self.ui.phone.text())
 
-        self.item.prov.save()
+        if self.item.prov.new :
+            self.item.prov.save()
+        else :
+            self.item.prov.update()
 
-        self.item.setText(0, self.item.prov.pid)
+        self.reloadRow()
+        self.hide()
+
+    def cancel (self) :
+        self.item.setText(0, str(self.item.prov.pid))
         self.item.setText(1, self.item.prov.name)
         self.item.setText(2, self.item.prov.phone)
+
+        self.hide()
+
+    def reloadRow (self) :
+        pid = unicode(self.ui.pid.text())
+        name = unicode(self.ui.name.text())
+        phone = unicode(self.ui.phone.text())
+
+        self.item.setText(0, pid)
+        self.item.setText(1, name)
+        self.item.setText(2, phone)
         

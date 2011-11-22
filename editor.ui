@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>182</height>
+    <height>209</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,6 +46,13 @@
      <item>
       <widget class="QLineEdit" name="phone"/>
      </item>
+     <item>
+      <widget class="QDialogButtonBox" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
@@ -64,55 +71,89 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pid</sender>
-   <signal>textEdited(QString)</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>Form</receiver>
    <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>46</y>
+     <x>341</x>
+     <y>184</y>
     </hint>
     <hint type="destinationlabel">
-     <x>200</x>
-     <y>90</y>
+     <x>175</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Form</receiver>
+   <slot>cancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>194</x>
+     <y>181</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pid</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>reloadRow()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>21</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>name</sender>
-   <signal>textEdited(QString)</signal>
+   <signal>textChanged(QString)</signal>
    <receiver>Form</receiver>
-   <slot>save()</slot>
+   <slot>reloadRow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>102</y>
+     <x>238</x>
+     <y>99</y>
     </hint>
     <hint type="destinationlabel">
-     <x>200</x>
-     <y>90</y>
+     <x>398</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>phone</sender>
-   <signal>textEdited(QString)</signal>
+   <signal>textChanged(QString)</signal>
    <receiver>Form</receiver>
-   <slot>save()</slot>
+   <slot>reloadRow()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>158</y>
+     <x>246</x>
+     <y>155</y>
     </hint>
     <hint type="destinationlabel">
-     <x>200</x>
-     <y>90</y>
+     <x>398</x>
+     <y>150</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>save()</slot>
+  <slot>cancel()</slot>
+  <slot>reloadRow()</slot>
  </slots>
 </ui>

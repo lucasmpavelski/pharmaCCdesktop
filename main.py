@@ -31,13 +31,6 @@ class Main(QtGui.QMainWindow):
                 #item.setCheckState(0,QtCore.Qt.Unchecked)
             self.ui.list.addTopLevelItem(item)
 
-    def on_list_itemChanged(self,item,column):
-        if item.checkState(0):
-            item.prov.done = True
-        else:
-            item.prov.done = False
-        item.prov.save()
-
     def on_actionDelete_Provider_triggered(self,checked=None):
         if checked is None: return
         item = self.ui.list.currentItem()
