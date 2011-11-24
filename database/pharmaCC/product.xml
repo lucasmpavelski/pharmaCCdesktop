@@ -1,0 +1,2 @@
+<?xml version="1.0" ?>
+<table><name>product</name><columns><column id="0" name="amount_prod" type="int"/><column id="1" name="name_prod" type="str"/><column id="2" name="price_prod" type="float"/><column id="3" name="prov_prod" type="str"/><column id="4" name="id_prod" type="int"/></columns><data><row amount_prod="30" id_prod="0" name_prod="dipirona" price_prod="2.98" prov_prod="farmax"/><row amount_prod="90" id_prod="1" name_prod="anador" price_prod="9.98" prov_prod="farmex"/></data></table>
