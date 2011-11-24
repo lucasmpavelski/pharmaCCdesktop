@@ -6,31 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>730</width>
-    <height>599</height>
+    <width>596</width>
+    <height>683</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>9</y>
-     <width>711</width>
-     <height>581</height>
-    </rect>
-   </property>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>318</width>
-      <height>29</height>
-     </rect>
-    </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="botton_new">
@@ -54,68 +38,58 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QTreeWidget" name="list">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>44</y>
-      <width>691</width>
-      <height>241</height>
-     </rect>
-    </property>
-    <property name="tabKeyNavigation">
-     <bool>true</bool>
-    </property>
-    <property name="alternatingRowColors">
-     <bool>true</bool>
-    </property>
-    <property name="itemsExpandable">
-     <bool>false</bool>
-    </property>
-    <property name="sortingEnabled">
-     <bool>true</bool>
-    </property>
-    <property name="expandsOnDoubleClick">
-     <bool>false</bool>
-    </property>
-    <column>
-     <property name="text">
-      <string>Codigo</string>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Nome</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Fornecedor</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Preco</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Quantidade</string>
-     </property>
-    </column>
-   </widget>
-   <widget class="QWidget" name="widget_2" native="true">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>297</y>
-      <width>693</width>
-      <height>281</height>
-     </rect>
-    </property>
-   </widget>
-  </widget>
+     <widget class="QTreeWidget" name="list_2">
+      <property name="tabKeyNavigation">
+       <bool>true</bool>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="itemsExpandable">
+       <bool>false</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="expandsOnDoubleClick">
+       <bool>false</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Codigo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nome</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Forncedor</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Preco</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Quantidade</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="ProductForm" name="product_form" native="true"/>
+    </widget>
+   </item>
+  </layout>
   <action name="actionNew_Product">
    <property name="text">
     <string>Novo produto</string>
@@ -125,6 +99,14 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ProductForm</class>
+   <extends>QWidget</extends>
+   <header>productForm</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

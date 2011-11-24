@@ -6,83 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>604</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>10</y>
-      <width>791</width>
-      <height>551</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QTabWidget" name="tabWidget">
-       <property name="currentIndex">
-        <number>1</number>
-       </property>
-       <property name="movable">
-        <bool>true</bool>
-       </property>
-       <widget class="QWidget" name="tab">
-        <attribute name="title">
-         <string>Fornecedor</string>
-        </attribute>
-        <widget class="QWidget" name="widget" native="true">
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>771</width>
-           <height>501</height>
-          </rect>
-         </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <property name="movable">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>Fornecedor</string>
+         </attribute>
+         <widget class="QWidget" name="widget" native="true">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>771</width>
+            <height>501</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Produto</string>
+         </attribute>
+         <widget class="ProductIndex" name="product_index" native="true">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>581</width>
+            <height>591</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab_3">
+         <attribute name="title">
+          <string>Usuario</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_4">
+         <attribute name="title">
+          <string>Vendas</string>
+         </attribute>
         </widget>
        </widget>
-       <widget class="QWidget" name="tab_2">
-        <attribute name="title">
-         <string>Produto</string>
-        </attribute>
-        <widget class="ProductIndex" name="product_index" native="true">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>781</width>
-           <height>511</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="tab_3">
-        <attribute name="title">
-         <string>Usuario</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="tab_4">
-        <attribute name="title">
-         <string>Vendas</string>
-        </attribute>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>604</width>
      <height>22</height>
     </rect>
    </property>
