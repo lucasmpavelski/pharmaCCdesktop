@@ -3,9 +3,15 @@
 """A simple backend for a Pharma app"""
 
 import os
+import sys
+sys.path.append("../RelaXML/src")
+from DBMS import DBMS
 
-#dbdir=os.path.join(os.path.expanduser("~"),".pyqtodo")
-#dbfile=os.path.join(dbdir,"tasks.sqlite")
+dbms_name = "database"
+dbms_path = "."
+dbms = DBMS(dbms_name, dbms_path)
+
+db = dbms.useDatabase("pharmaCC")
 
 allproviders = []
 
@@ -27,28 +33,33 @@ class Provider (object) :
     def save (self) :
       self.new = False
       print "save " + self.name
-      allproviders.append(self)
+      values = {"id_prov"    : self.pid,
+		"name_prov"  : self.name,
+		"phone_prov" : self.phone}
+      db.insertInto("provider", values)
 
     def update (self) :
       print "update " + self.name
-      allproviders.append(self)
+      #allproviders.append(self)
 
     def delete (self) :
       print "delete " + self.name
-      allproviders.remove(self)
+      #allproviders.remove(self)
 
     @staticmethod
     def query (qry) :
-      if qry == "all" :
-        return allproviders
+      provs = db.fromTables(["provider"])
+      r = []
+      for prov in provs.data :
+          r.append(Provider(prov['id_prov'], prov['name_prov'], prov['phone_prov']))
+      return r
 
 def initDB() :
-  allproviders.extend([Provider(0, "nha", "54654"),
-                       Provider(1, "nha1", "65654"),
-                       Provider(2, "nha2", "54622"),
-                       Provider(3, "nha3", "34654")])
-  for p in allproviders : p.new = False
-
+    allproviders.extend([Provider(0, "nha", "54654"),
+          	       Provider(1, "nha1", "65654"),
+          	       Provider(2, "nha2", "54622"),
+          	       Provider(3, "nha3", "34654")])
+    for p in allproviders : p.new = False
 
 def main() :
   initDB()
