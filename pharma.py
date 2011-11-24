@@ -13,7 +13,54 @@ dbms = DBMS(dbms_name, dbms_path)
 
 db = dbms.useDatabase("pharmaCC")
 
-allproviders = []
+
+
+class Product (object) :
+    """
+    A product to the pharma.
+    """
+
+    def __init__ (self, pid, name, provider, price, amount) :
+      self.new = True
+
+      self.id = pid
+      self.name = name
+      self.provider = provider
+      self.price = price
+      self.amount = amount
+          
+    def __repr__(self):
+      return "Product: " + self.name
+
+    def save (self) :
+      self.new = False
+      print "save product " + self.name
+      values = {"id_prod"    : self.id,
+		"name_prod"  : self.name,
+		"prov_prod"  : self.provider,
+                "price_prod" : self.price,
+		"amount_prod": self.amount}
+      db.insertInto("product", values)
+
+    def update (self) :
+      print "update " + self.name
+      #allproviders.append(self)
+
+    def remove (self) :
+      db.deleteFrom("product", "id_prod == " + self.id)
+      print "delete product " + self.name
+
+    @staticmethod
+    def query (qry) :
+      prods = db.fromTables(["product"])
+      r = []
+      for prod in prods.data :
+          r.append(Product( prod["id_prod"    ],
+                            prod["name_prod"  ], 
+                            prod["prov_prod"  ], 
+                            prod["price_prod" ], 
+                            prod["amount_prod"]))
+      return r
 
 class Provider (object) :
     """

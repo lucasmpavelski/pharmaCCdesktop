@@ -1,4 +1,6 @@
 #!/bin/sh
 
-pyuic4 window.ui -o windowUi.py
-pyuic4 editor.ui -o editorUi.py
+pykdeuic4 -o productFormUi.py productForm.ui
+pykdeuic4 -o productIndexUi.py productIndex.ui
+
+pykdeuic4 -o mainWindowUi.py mainWindow.ui
