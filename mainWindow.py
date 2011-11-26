@@ -2,13 +2,14 @@
 
 import os,sys
 
-# Import Qt modules
 from PyQt4 import QtCore,QtGui
 
-# Import the compiled UI module
+sys.path.append("model")
+sys.path.append("view")
+sys.path.append("controller")
+import pharma
 from mainWindowUi import Ui_MainWindow
 
-# Create a class for our main window
 class Main(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)

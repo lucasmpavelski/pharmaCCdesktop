@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>596</width>
+    <height>683</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="botton_new">
+       <property name="text">
+        <string>Novo Produto</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_edit">
+       <property name="text">
+        <string>Apagar Produto</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_delete">
+       <property name="text">
+        <string>Editar Produto</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <widget class="QTreeWidget" name="product_index">
+      <property name="tabKeyNavigation">
+       <bool>true</bool>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="itemsExpandable">
+       <bool>false</bool>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <property name="expandsOnDoubleClick">
+       <bool>false</bool>
+      </property>
+      <column>
+       <property name="text">
+        <string>Codigo</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Nome</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Forncedor</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Preco</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Quantidade</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="ProductForm" name="product_form" native="true"/>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionNew_Product">
+   <property name="text">
+    <string>Novo produto</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ProductForm</class>
+   <extends>QWidget</extends>
+   <header>productForm</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>botton_new</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>new()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>131</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>202</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_edit</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>remove()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>304</x>
+     <y>26</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>395</x>
+     <y>5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_delete</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>edit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>494</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>6</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>new()</slot>
+  <slot>remove()</slot>
+  <slot>edit()</slot>
+ </slots>
+</ui>
