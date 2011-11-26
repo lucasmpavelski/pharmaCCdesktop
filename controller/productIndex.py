@@ -15,7 +15,7 @@ class ProductIndex (QtGui.QWidget) :
 
 	self.ui.product_form.hide()
 
-        for p in pharma.Product.query('all') :
+        for p in pharma.Product.get_all() :
             item = self._make_QTreeWidgetItem(p)
             self.ui.product_index.addTopLevelItem(item)
 
@@ -29,7 +29,7 @@ class ProductIndex (QtGui.QWidget) :
 	self.ui.product_form.edit(item)
 
     def new (self) :
-	p = pharma.Product(0, "novo produto", "fornecedor", 0.00, 0)
+	p = pharma.Product("novo produto", "fornecedor", 0.00, 0)
 	item = self._make_QTreeWidgetItem(p)
 
 	self.ui.product_index.addTopLevelItem(item)
@@ -46,8 +46,8 @@ class ProductIndex (QtGui.QWidget) :
 	self.ui.product_index.takeTopLevelItem(self.ui.product_index.indexOfTopLevelItem(item))
     
     def remove (self) :
-	item = self.ui.product_index.currentItem()
-	if not item : return
-	item.product.remove()
-
+        item = self.ui.product_index.currentItem()
+        if not item : return
+        item.product.remove()
+        
         self.remove_item(item)
