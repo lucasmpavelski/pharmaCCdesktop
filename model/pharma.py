@@ -17,7 +17,7 @@ printops = True
 
 class Record (object) :
 
-  def saveToTable (self) :
+  def save (self) :
     self.new = False
     print "save " + self.who + " " + self.name
     values = self._get_dict()
@@ -39,6 +39,7 @@ class Record (object) :
 
   @classmethod
   def get_all (cls) :
+    print cls.who
     allrows =  db.fromTables([cls.who])
     r = []
     for row in allrows.data :
@@ -55,7 +56,7 @@ class Product (Record) :
 
     def __init__ (self, name_prod, prov_prod, price_prod, amount_prod, id_prod = None, isNew = True) :
       self.new = isNew
-      self.who = "product"
+      self.who = Product.who
 
       if id_prod == None :
         self.id = self.lastId("id_prod") + 1
@@ -77,9 +78,6 @@ class Product (Record) :
               "price_prod" : self.price,
               "amount_prod": self.amount}
 
-    def save (self) :
-      self.saveToTable()
-
     def update (self) :
       self.updateThe("id_prod == " + str(self.id))
 
@@ -87,18 +85,23 @@ class Product (Record) :
       self.removeThe("id_prod == " + str(self.id))
       
     
-
-class Provider (object) :
+class Provider (Record) :
     """
     A provider to the pharma.
     """
+    who = "provider"
 
-    def __init__ (self, pid, name, phone) :
-      self.new = True
+    def __init__ (self, name_prov, phone_prov, id_prov = None, isNew = True) :
+      self.new = isNew
+      self.who = Provider.who
 
-      self.id = pid
-      self.name = name
-      self.phone = phone
+      if id_prov == None :
+        self.id = self.lastId("id_prov") + 1
+      else :
+        self.id = id_prov
+
+      self.name = name_prov
+      self.phone = phone_prov
           
     def __repr__(self):
       return "Provider: " + self.name + ", phone:" + self.phone
@@ -108,46 +111,48 @@ class Provider (object) :
               "name_prov"  : self.name,
               "phone_prov" : self.phone}
 
-    def save (self) :
-      self.saveToTable("provider")
-      #self.new = False
-      #print "save " + self.name
-      #values = {"id_prov"    : self.pid,
-		#"name_prov"  : self.name,
-		#"phone_prov" : self.phone}
-      #db.insertInto("provider", values)
-
     def update (self) :
-      print "update " + self.name
-      #allproviders.append(self)
+      self.updateThe("id_prov == " + str(self.id))
 
     def delete (self) :
-      print "delete " + self.name
-      #allproviders.remove(self)
+      self.removeThe("id_prov == " + str(self.id))
+      
+    
+class User (Record) :
+    """
+    A provider to the pharma.
+    """
+    who = "provider"
 
-    @staticmethod
-    def query (qry) :
-      provs = db.fromTables(["provider"])
-      r = []
-      for prov in provs.data :
-          r.append(Provider(prov['id_prov'], prov['name_prov'], prov['phone_prov']))
-      return r
+    def __init__ (self, name_prov, phone_prov, id_prov = None, isNew = True) :
+      self.new = isNew
+      self.who = Provider.who
 
-def initDB() :
-    allproviders.extend([Provider(0, "nha", "54654"),
-          	       Provider(1, "nha1", "65654"),
-          	       Provider(2, "nha2", "54622"),
-          	       Provider(3, "nha3", "34654")])
-    for p in allproviders : p.new = False
+      if id_prov == None :
+        self.id = self.lastId("id_prov") + 1
+      else :
+        self.id = id_prov
+
+      self.name = name_prov
+      self.phone = phone_prov
+          
+    def __repr__(self):
+      return "Provider: " + self.name + ", phone:" + self.phone
+
+    def _get_dict (self) :
+      return {"id_prov"    : self.id,
+              "name_prov"  : self.name,
+              "phone_prov" : self.phone}
+
+    def update (self) :
+      self.updateThe("id_prov == " + str(self.id))
+
+    def delete (self) :
+      self.removeThe("id_prov == " + str(self.id))
+
 
 def main() :
-  initDB()
-  print Provider.query("all")
-  allproviders[2].delete()
-  print Provider.query("all")
-  p = Provider(10, "yey", "4654")
-  p.save()
-  print Provider.query("all")
+  print Provider.get_all()
 
 if __name__ == "__main__":
     main()

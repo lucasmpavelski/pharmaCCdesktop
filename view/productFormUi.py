@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'productForm.ui'
 #
-# Created: Sat Nov 26 20:03:33 2011
+# Created: Sat Nov 26 21:58:31 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!

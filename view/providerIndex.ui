@@ -76,14 +76,14 @@
        </property>
       </column>
      </widget>
-     <widget class="providerForm" name="provider_form" native="true"/>
+     <widget class="ProviderForm" name="provider_form" native="true"/>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>providerForm</class>
+   <class>ProviderForm</class>
    <extends>QWidget</extends>
    <header>providerForm</header>
    <container>1</container>

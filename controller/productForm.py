@@ -23,7 +23,7 @@ class ProductForm (QtGui.QWidget) :
         self.show()
 
     def save (self) :
-        self.item.product.id = int(unicode(self.ui.pidText.text()))
+        #self.item.product.id = int(unicode(self.ui.pidText.text()))
         self.item.product.name = unicode(self.ui.nameText.text())
         self.item.product.provider = unicode(self.ui.providerText.text())
         self.item.product.price = float(unicode(self.ui.priceText.text()))

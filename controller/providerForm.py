@@ -11,17 +11,17 @@ class ProviderForm (QtGui.QWidget) :
         self.ui=Ui_Form()
         self.ui.setupUi(self)
 
-def edit(self,item):
+    def edit(self,item):
         self.item = item
         self.ui.id.setText(str(self.item.provider.id))
-        self.ui.name.setText(self.item.produto.name)
-        self.ui.phone.setText(self.item.produto.phone)
+        self.ui.name.setText(self.item.provider.name)
+        self.ui.phone.setText(self.item.provider.phone)
 
         #self.ui.tags.setText(','.join( t.name for t in self.item.task.tags))
         self.show()
 
     def save (self) :
-        self.item.provider.id = int(unicode(self.ui.id.text()))
+        #self.item.provider.id = int(unicode(self.ui.id.text()))
         self.item.provider.name = unicode(self.ui.name.text())
         self.item.provider.phone = unicode(self.ui.phone.text())
 

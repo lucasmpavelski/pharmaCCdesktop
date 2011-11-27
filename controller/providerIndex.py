@@ -13,14 +13,14 @@ class ProviderIndex (QtGui.QWidget) :
         self.ui=Ui_Form()
         self.ui.setupUi(self)
 
-    self.ui.provider_form.hide()
+        self.ui.provider_form.hide()
 
-        for p in pharma.Provider.all() :
+        for p in pharma.Provider.get_all() :
             item = self._make_QTreeWidgetItem(p)
             self.ui.provider_index.addTopLevelItem(item)
 
     def _make_QTreeWidgetItem (self, p) :
-        item = QtGui.QTreeWidgetItem([str(p.id), p.name, p.provider, str(p.price), str(p.amount)])
+        item = QtGui.QTreeWidgetItem([str(p.id), p.name, p.phone])
         item.provider = p
         return item
  
@@ -29,7 +29,7 @@ class ProviderIndex (QtGui.QWidget) :
         self.ui.provider_form.edit(item)
 
     def new (self) :
-        p = pharma.Provider(0, "novo produto", "fornecedor", 0.00, 0)
+        p = pharma.Provider("novo fornecedor", "0000-0000")
         item = self._make_QTreeWidgetItem(p)
 
         self.ui.provider_index.addTopLevelItem(item)
