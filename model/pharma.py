@@ -48,7 +48,9 @@ class Record (object) :
 
   @classmethod
   def find (cls, _id) :
-    return db.fromTables([cls.who]).where(cls.id_field + " == " + str(_id))[0]
+    row = db.fromTables([cls.who]).where(cls.id_field + " == " + str(_id))[0]
+    row.update({'isNew': False})
+    return cls(**row)
 
 
 class Product (Record) :
@@ -156,6 +158,71 @@ class User (Record) :
       self.removeThe("id_prov == " + str(self.id))
 
 
+class SoldProduct (Record) :
+    """
+    A product that has been sold.
+    """
+    who = "sold_product"
+    id_field = "id_sold_prod"
+
+    def __init__ (self, id_prod_sold_prod, id_sell_sold_prod, id_sold_prod = None, isNew = True) :
+      self.new = isNew
+      self.who = SoldProduct.who
+
+      if sold_prod_id == None :
+        self.id = self.lastId("sold_product") + 1
+      else :
+        self.id = sold_prod_id
+
+      self.prod = id_prod_sold_prod
+      self.sell = id_prod_sold_prod
+
+    def _get_dict (self) :
+      return {"id_sold_prod"      : self.id,
+              "id_prod_sold_prod" : self.id_prod,
+              "id_sell_sold_prod" : self.id_sell}
+
+    def update (self) :
+      self.updateThe("sold_prod_id == " + str(self.id))
+
+    def delete (self) :
+      self.removeThe("sold_prod_id == " + str(self.id))
+      
+      
+class Sell (Record) :
+    """
+    A sell full of products.
+    """
+    who = "sell"
+    id_field = "id_sell"
+
+    def __init__ (self, id_sell = None, isNew = True) :
+      self.new = isNew
+      self.who = SoldProduct.who
+
+      if id_sell == None :
+        self.id = self.lastId("sell") + 1
+      else :
+        self.id = id_sell
+
+      self.id = id_sell
+
+    def _get_dict (self) :
+      return {"id_sell" : self.id}
+
+    def update (self) :
+      self.updateThe("id_sell == " + str(self.id))
+
+    def delete (self) :
+      self.removeThe("id_sell == " + str(self.id))
+      
+    def products (self) :
+      r = []
+      rows = db.fromTable("sold_product").select(['id_prod_sold_prod']).where("id_sell_sold_prod == " + str(self.id))
+      for row in rows :
+        r.append(Product.find(row['d_prod_sold_prod']))
+      return r
+        
 def main() :
   print Provider.get_all()
 

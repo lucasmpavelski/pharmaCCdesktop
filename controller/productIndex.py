@@ -21,7 +21,7 @@ class ProductIndex (QtGui.QWidget) :
 
     def _make_QTreeWidgetItem (self, p) :
         pr = pharma.Provider.find(p.provider)
-        item = QtGui.QTreeWidgetItem([str(p.id), p.name, pr['name_prov'], str(p.price), str(p.amount)])
+        item = QtGui.QTreeWidgetItem([str(p.id), p.name, pr.name, str(p.price), str(p.amount)])
         item.product = p
         return item
  
