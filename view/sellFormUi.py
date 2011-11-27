@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'sellsForm.ui'
+# Form implementation generated from reading ui file 'sellForm.ui'
 #
-# Created: Sun Nov 27 15:43:43 2011
+# Created: Sun Nov 27 17:32:58 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!

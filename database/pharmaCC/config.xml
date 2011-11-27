@@ -1,1 +1,1 @@
-<?xml version="1.0" ?><database><name>pharmaCC</name><tables><table name="provider"/><table name="product"/></tables></database>
+<?xml version="1.0" ?><database><name>pharmaCC</name><tables><table name="provider"/><table name="product"/><table name="sold_product"/><table name="sell"/></tables></database>

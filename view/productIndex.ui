@@ -90,14 +90,6 @@
     </widget>
    </item>
   </layout>
-  <action name="actionNew_Product">
-   <property name="text">
-    <string>Novo produto</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>

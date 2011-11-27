@@ -20,7 +20,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <property name="movable">
          <bool>true</bool>
@@ -55,6 +55,11 @@
          <attribute name="title">
           <string>Vendas</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="SellIndex" name="widget_2" native="true"/>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
@@ -85,6 +90,12 @@
    <class>ProductIndex</class>
    <extends>QWidget</extends>
    <header>productIndex</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SellIndex</class>
+   <extends>QWidget</extends>
+   <header>sellIndex</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

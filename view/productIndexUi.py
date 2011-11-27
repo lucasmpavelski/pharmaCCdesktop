@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'productIndex.ui'
 #
-# Created: Sun Nov 27 15:43:41 2011
+# Created: Sun Nov 27 17:32:56 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,8 +39,6 @@ class Ui_Form(object):
         self.product_form = ProductForm(self.splitter)
         self.product_form.setObjectName("product_form")
         self.verticalLayout.addWidget(self.splitter)
-        self.actionNew_Product = QtGui.QAction(Form)
-        self.actionNew_Product.setObjectName("actionNew_Product")
 
         self.retranslateUi(Form)
         QtCore.QObject.connect(self.botton_new, QtCore.SIGNAL("clicked()"), Form.new)
@@ -59,7 +57,5 @@ class Ui_Form(object):
         self.product_index.headerItem().setText(2, QtGui.QApplication.translate("Form", "Forncedor", None, QtGui.QApplication.UnicodeUTF8))
         self.product_index.headerItem().setText(3, QtGui.QApplication.translate("Form", "Preco", None, QtGui.QApplication.UnicodeUTF8))
         self.product_index.headerItem().setText(4, QtGui.QApplication.translate("Form", "Quantidade", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNew_Product.setText(QtGui.QApplication.translate("Form", "Novo produto", None, QtGui.QApplication.UnicodeUTF8))
-        self.actionNew_Product.setShortcut(QtGui.QApplication.translate("Form", "Ctrl+N", None, QtGui.QApplication.UnicodeUTF8))
 
 from productForm import ProductForm

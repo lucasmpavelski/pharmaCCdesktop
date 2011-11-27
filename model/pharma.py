@@ -50,9 +50,12 @@ class Record (object) :
 
   @classmethod
   def find (cls, _id) :
-    row = db.fromTables([cls.who]).where(cls.id_field + " == " + str(_id))[0]
-    row.update({'isNew': False})
-    return cls(**row)
+    row = db.fromTables([cls.who]).where(cls.id_field + " == " + str(_id))
+    if row.data :
+      row[0].update({'isNew': False})
+      return cls(**row[0])
+    else :
+      return None
 
 
 class Product (Record) :
@@ -190,9 +193,9 @@ class Sell (Record) :
       
     def products (self) :
       r = []
-      rows = db.fromTable("sold_product").select(['id_prod_sold_prod']).where("id_sell_sold_prod == " + str(self.id))
+      rows = db.fromTables(["sold_product"]).where("id_sell_sold_prod == " + str(self.id)).select(['id_prod_sold_prod'])
       for row in rows :
-        r.append(Product.find(row['d_prod_sold_prod']))
+        r.append(Product.find(row['id_prod_sold_prod']))
       return r
         
 def main() :

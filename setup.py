@@ -50,3 +50,32 @@ if not db.hasTable("product") :
              "price_prod" : 9.98      ,
              "amount_prod": 90        }
     db.insertInto("product", prod2)
+    prod3 = {"id_prod"    : 2         ,
+             "name_prod"  : u"doril" ,
+             "prov_prod"  : 3 ,
+             "price_prod" : 9.98      ,
+             "amount_prod": 30        }
+    db.insertInto("product", prod3)
+
+if not db.hasTable("sold_product") :
+    sold_prodColumns = {"id_sold_prod": "int",
+                        "id_sell_sold_prod": "int",
+                        "id_prod_sold_prod": "int"}
+    db.createTable("sold_product", sold_prodColumns)
+
+    db.insertInto("sold_product", {"id_sold_prod" :0 , "id_sell_sold_prod" : 0, "id_prod_sold_prod" : 0})
+    db.insertInto("sold_product", {"id_sold_prod" :1 , "id_sell_sold_prod" : 0, "id_prod_sold_prod" : 0})
+    db.insertInto("sold_product", {"id_sold_prod" :2 , "id_sell_sold_prod" : 1, "id_prod_sold_prod" : 1})
+    db.insertInto("sold_product", {"id_sold_prod" :3 , "id_sell_sold_prod" : 1, "id_prod_sold_prod" : 1})
+    db.insertInto("sold_product", {"id_sold_prod" :4 , "id_sell_sold_prod" : 2, "id_prod_sold_prod" : 2})
+    db.insertInto("sold_product", {"id_sold_prod" :5 , "id_sell_sold_prod" : 2, "id_prod_sold_prod" : 1})
+    db.insertInto("sold_product", {"id_sold_prod" :6 , "id_sell_sold_prod" : 2, "id_prod_sold_prod" : 0})
+
+if not db.hasTable("sell") :
+    sellColumns = {"id_sell": "int"}
+    db.createTable("sell", sellColumns)
+
+    db.insertInto("sell", {"id_sell" :0})
+    db.insertInto("sell", {"id_sell" :1})
+    db.insertInto("sell", {"id_sell" :2})
+    

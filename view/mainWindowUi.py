@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainWindow.ui'
 #
-# Created: Sun Nov 27 15:43:41 2011
+# Created: Sun Nov 27 17:32:56 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -45,6 +45,11 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_3, "")
         self.tab_4 = QtGui.QWidget()
         self.tab_4.setObjectName("tab_4")
+        self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab_4)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.widget_2 = SellIndex(self.tab_4)
+        self.widget_2.setObjectName("widget_2")
+        self.verticalLayout_3.addWidget(self.widget_2)
         self.tabWidget.addTab(self.tab_4, "")
         self.verticalLayout.addWidget(self.tabWidget)
         self.verticalLayout_2.addLayout(self.verticalLayout)
@@ -58,7 +63,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -68,5 +73,6 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), QtGui.QApplication.translate("MainWindow", "Usuario", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), QtGui.QApplication.translate("MainWindow", "Vendas", None, QtGui.QApplication.UnicodeUTF8))
 
+from sellIndex import SellIndex
 from productIndex import ProductIndex
 from providerIndex import ProviderIndex
