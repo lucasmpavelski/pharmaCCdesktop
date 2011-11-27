@@ -39,7 +39,6 @@ class Record (object) :
 
   @classmethod
   def get_all (cls) :
-    print cls.who
     allrows =  db.fromTables([cls.who])
     r = []
     for row in allrows.data :
@@ -47,12 +46,17 @@ class Record (object) :
       r.append(cls(**row))
     return r
 
+  @classmethod
+  def find (cls, _id) :
+    return db.fromTables([cls.who]).where(cls.id_field + " == " + str(_id))[0]
+
 
 class Product (Record) :
     """
     A product to the pharma.
     """
     who = "product"
+    id_field = "id_prod"
 
     def __init__ (self, name_prod, prov_prod, price_prod, amount_prod, id_prod = None, isNew = True) :
       self.new = isNew
@@ -90,6 +94,7 @@ class Provider (Record) :
     A provider to the pharma.
     """
     who = "provider"
+    id_field = "id_prov"
 
     def __init__ (self, name_prov, phone_prov, id_prov = None, isNew = True) :
       self.new = isNew

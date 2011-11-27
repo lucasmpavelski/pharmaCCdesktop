@@ -33,20 +33,20 @@ if not db.hasTable("provider") :
 if not db.hasTable("product") :
     productColumns = {"id_prod": "int",
                       "name_prod": "unicode",
-                      "prov_prod": "unicode",
+                      "prov_prod": "int",
                       "price_prod": "float",
                       "amount_prod": "int"}
     db.createTable("product", productColumns)
 
     prod1 = {"id_prod"    : 0         ,
              "name_prod"  : u"dipirona",
-             "prov_prod"  : u"farmax" ,
+             "prov_prod"  : 0 ,
              "price_prod" : 2.98      ,
              "amount_prod": 30        }
     db.insertInto("product", prod1)
     prod2 = {"id_prod"    : 1         ,
              "name_prod"  : u"anador" ,
-             "prov_prod"  : u"farmex" ,
+             "prov_prod"  : 1 ,
              "price_prod" : 9.98      ,
              "amount_prod": 90        }
     db.insertInto("product", prod2)

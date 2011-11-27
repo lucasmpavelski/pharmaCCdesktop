@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'productForm.ui'
 #
-# Created: Sat Nov 26 21:58:31 2011
+# Created: Sat Nov 26 23:28:18 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -14,7 +14,7 @@ class Ui_Form(object):
         Form.setObjectName("Form")
         Form.resize(583, 259)
         self.layoutWidget = QtGui.QWidget(Form)
-        self.layoutWidget.setGeometry(QtCore.QRect(10, 20, 561, 224))
+        self.layoutWidget.setGeometry(QtCore.QRect(10, 20, 561, 251))
         self.layoutWidget.setObjectName("layoutWidget")
         self.formLayout = QtGui.QFormLayout(self.layoutWidget)
         self.formLayout.setFieldGrowthPolicy(QtGui.QFormLayout.AllNonFixedFieldsGrow)
@@ -40,9 +40,6 @@ class Ui_Form(object):
         self.nameText = QtGui.QLineEdit(self.layoutWidget)
         self.nameText.setObjectName("nameText")
         self.formLayout.setWidget(2, QtGui.QFormLayout.FieldRole, self.nameText)
-        self.providerText = QtGui.QLineEdit(self.layoutWidget)
-        self.providerText.setObjectName("providerText")
-        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.providerText)
         self.priceText = QtGui.QLineEdit(self.layoutWidget)
         self.priceText.setObjectName("priceText")
         self.formLayout.setWidget(6, QtGui.QFormLayout.FieldRole, self.priceText)
@@ -53,15 +50,18 @@ class Ui_Form(object):
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.formLayout.setWidget(10, QtGui.QFormLayout.FieldRole, self.buttonBox)
+        self.providerComboBox = QtGui.QComboBox(self.layoutWidget)
+        self.providerComboBox.setObjectName("providerComboBox")
+        self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.providerComboBox)
 
         self.retranslateUi(Form)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("rejected()"), Form.cancel)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL("accepted()"), Form.save)
         QtCore.QObject.connect(self.pidText, QtCore.SIGNAL("textChanged(QString)"), Form.reloadRow)
         QtCore.QObject.connect(self.nameText, QtCore.SIGNAL("textChanged(QString)"), Form.reloadRow)
-        QtCore.QObject.connect(self.providerText, QtCore.SIGNAL("textChanged(QString)"), Form.reloadRow)
         QtCore.QObject.connect(self.priceText, QtCore.SIGNAL("textChanged(QString)"), Form.reloadRow)
         QtCore.QObject.connect(self.amountText, QtCore.SIGNAL("textChanged(QString)"), Form.reloadRow)
+        QtCore.QObject.connect(self.providerComboBox, QtCore.SIGNAL("currentIndexChanged(int)"), Form.reloadRow)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

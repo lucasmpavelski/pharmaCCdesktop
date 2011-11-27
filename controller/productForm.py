@@ -1,8 +1,8 @@
-# Import Qt modules
-from PyQt4 import QtCore,QtGui
+from PyQt4 import QtCore, QtGui
 
-# Import the compiled UI module
 from productFormUi import Ui_Form
+
+import pharma
 
 class ProductForm (QtGui.QWidget) :
     def __init__(self,parent,task=None):
@@ -11,11 +11,15 @@ class ProductForm (QtGui.QWidget) :
         self.ui=Ui_Form()
         self.ui.setupUi(self)
 
+        for pr in pharma.Provider.get_all() :
+          self.ui.providerComboBox.addItem(pr.name, pr.id)
+        
+
     def edit(self,item):
         self.item = item
         self.ui.pidText.setText(str(self.item.product.id))
         self.ui.nameText.setText(self.item.product.name)
-        self.ui.providerText.setText(self.item.product.provider)
+        self.ui.providerComboBox.setCurrentIndex(self.ui.providerComboBox.findData(self.item.product.provider))
         self.ui.priceText.setText(str(self.item.product.price))
         self.ui.amountText.setText(str(self.item.product.amount))
 
@@ -25,7 +29,7 @@ class ProductForm (QtGui.QWidget) :
     def save (self) :
         #self.item.product.id = int(unicode(self.ui.pidText.text()))
         self.item.product.name = unicode(self.ui.nameText.text())
-        self.item.product.provider = unicode(self.ui.providerText.text())
+        self.item.product.provider = int(self.ui.providerComboBox.itemData(self.ui.providerComboBox.currentIndex()).toInt()[0])
         self.item.product.price = float(unicode(self.ui.priceText.text()))
         self.item.product.amount = int(unicode(self.ui.amountText.text()))
 
@@ -43,7 +47,7 @@ class ProductForm (QtGui.QWidget) :
         else :
             self.item.setText(0, str(self.item.product.id))
             self.item.setText(1, self.item.product.name)
-            self.item.setText(2, self.item.product.provider)
+            self.item.setText(2, self.ui.providerComboBox.itemText(self.ui.providerComboBox.findData(self.item.provider)))
             self.item.setText(3, str(self.item.product.price))
             self.item.setText(4, str(self.item.product.amount))
 
@@ -52,7 +56,7 @@ class ProductForm (QtGui.QWidget) :
     def reloadRow (self) :
         pid = unicode(self.ui.pidText.text())
         name = unicode(self.ui.nameText.text())
-        provider = unicode(self.ui.providerText.text())
+        provider = unicode(self.ui.providerComboBox.currentText())
         price = unicode(self.ui.priceText.text())
         amount = unicode(self.ui.amountText.text())
 

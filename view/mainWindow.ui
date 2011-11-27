@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>604</width>
-    <height>686</height>
+    <width>716</width>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="movable">
          <bool>true</bool>
@@ -29,36 +29,27 @@
          <attribute name="title">
           <string>Fornecedor</string>
          </attribute>
-         <widget class="ProviderIndex" name="widget" native="true">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>581</width>
-            <height>591</height>
-           </rect>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="ProviderIndex" name="widget" native="true"/>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="tab_2">
          <attribute name="title">
           <string>Produto</string>
          </attribute>
-         <widget class="ProductIndex" name="product_index" native="true">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>581</width>
-            <height>591</height>
-           </rect>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="ProductIndex" name="product_index" native="true"/>
+          </item>
+         </layout>
         </widget>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
           <string>Usuario</string>
          </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout"/>
         </widget>
         <widget class="QWidget" name="tab_4">
          <attribute name="title">
@@ -76,7 +67,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>604</width>
+     <width>716</width>
      <height>25</height>
     </rect>
    </property>

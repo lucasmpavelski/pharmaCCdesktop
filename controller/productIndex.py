@@ -20,7 +20,8 @@ class ProductIndex (QtGui.QWidget) :
             self.ui.product_index.addTopLevelItem(item)
 
     def _make_QTreeWidgetItem (self, p) :
-        item = QtGui.QTreeWidgetItem([str(p.id), p.name, p.provider, str(p.price), str(p.amount)])
+        pr = pharma.Provider.find(p.provider)
+        item = QtGui.QTreeWidgetItem([str(p.id), p.name, pr['name_prov'], str(p.price), str(p.amount)])
         item.product = p
         return item
  
