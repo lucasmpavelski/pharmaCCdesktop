@@ -23,12 +23,14 @@ class Record (object) :
     values = self._get_dict()
     db.insertInto(self.who, values)
 
-  def updateThe (self, when) :
+  def update (self) :
+    when = self.__class__.id_field + " == " + str(self.id)
     db.update(self.who, when, self._get_dict())
     print "update " + self.who + " " + self.name
 
-  def removeThe (self, when) :
-    db.deleteFrom("product", when)
+  def remove (self) :
+    when = self.__class__.id_field + " == " + str(self.id)
+    db.deleteFrom(self.who, when)
     print "delete " + self.who + " " + self.name
 
   def getAll (self) :
@@ -83,12 +85,6 @@ class Product (Record) :
               "prov_prod"  : self.provider,
               "price_prod" : self.price,
               "amount_prod": self.amount}
-
-    def update (self) :
-      self.updateThe("id_prod == " + str(self.id))
-
-    def remove (self) :
-      self.removeThe("id_prod == " + str(self.id))
       
     
 class Provider (Record) :
@@ -117,12 +113,6 @@ class Provider (Record) :
       return {"id_prov"    : self.id,
               "name_prov"  : self.name,
               "phone_prov" : self.phone}
-
-    def update (self) :
-      self.updateThe("id_prov == " + str(self.id))
-
-    def delete (self) :
-      self.removeThe("id_prov == " + str(self.id))
       
     
 class User (Record) :
@@ -151,12 +141,6 @@ class User (Record) :
               "name_prov"  : self.name,
               "phone_prov" : self.phone}
 
-    def update (self) :
-      self.updateThe("id_prov == " + str(self.id))
-
-    def delete (self) :
-      self.removeThe("id_prov == " + str(self.id))
-
 
 class SoldProduct (Record) :
     """
@@ -181,12 +165,6 @@ class SoldProduct (Record) :
       return {"id_sold_prod"      : self.id,
               "id_prod_sold_prod" : self.id_prod,
               "id_sell_sold_prod" : self.id_sell}
-
-    def update (self) :
-      self.updateThe("sold_prod_id == " + str(self.id))
-
-    def delete (self) :
-      self.removeThe("sold_prod_id == " + str(self.id))
       
       
 class Sell (Record) :
@@ -198,7 +176,7 @@ class Sell (Record) :
 
     def __init__ (self, id_sell = None, isNew = True) :
       self.new = isNew
-      self.who = SoldProduct.who
+      self.who = Sell.who
 
       if id_sell == None :
         self.id = self.lastId("sell") + 1
@@ -209,12 +187,6 @@ class Sell (Record) :
 
     def _get_dict (self) :
       return {"id_sell" : self.id}
-
-    def update (self) :
-      self.updateThe("id_sell == " + str(self.id))
-
-    def delete (self) :
-      self.removeThe("id_sell == " + str(self.id))
       
     def products (self) :
       r = []
