@@ -23,11 +23,9 @@ class ProductForm (QtGui.QWidget) :
         self.ui.priceText.setText(str(self.item.product.price))
         self.ui.amountText.setText(str(self.item.product.amount))
 
-        #self.ui.tags.setText(','.join( t.name for t in self.item.task.tags))
         self.show()
 
     def save (self) :
-        #self.item.product.id = int(unicode(self.ui.pidText.text()))
         self.item.product.name = unicode(self.ui.nameText.text())
         self.item.product.provider = int(self.ui.providerComboBox.itemData(self.ui.providerComboBox.currentIndex()).toInt()[0])
         self.item.product.price = float(unicode(self.ui.priceText.text()))
@@ -43,11 +41,11 @@ class ProductForm (QtGui.QWidget) :
 
     def cancel (self) :
         if self.item.product.new :
-            self.item
+            self.parentWidget().parentWidget().remove_item(self.item)
         else :
             self.item.setText(0, str(self.item.product.id))
             self.item.setText(1, self.item.product.name)
-            self.item.setText(2, self.ui.providerComboBox.itemText(self.ui.providerComboBox.findData(self.item.provider)))
+            self.item.setText(2, self.ui.providerComboBox.itemText(self.ui.providerComboBox.findData(self.item.product.provider)))
             self.item.setText(3, str(self.item.product.price))
             self.item.setText(4, str(self.item.product.amount))
 

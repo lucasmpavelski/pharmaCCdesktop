@@ -30,13 +30,16 @@ class ProviderForm (QtGui.QWidget) :
         else :
             self.item.provider.update()
 
-        self.reloadRow()
         self.hide()
 
     def cancel (self) :
-        self.item.setText(0, str(self.item.provider.id))
-        self.item.setText(1, self.item.provider.name)
-        self.item.setText(2, self.item.provider.phone)
+        if self.item.provider.new :
+          self.parentWidget().parentWidget().remove_item(self.item)
+        else :
+          self.item.setText(0, str(self.item.provider.id))
+          self.item.setText(1, self.item.provider.name)
+          self.item.setText(2, self.item.provider.phone)
+
 
         self.hide()
 

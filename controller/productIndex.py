@@ -30,7 +30,7 @@ class ProductIndex (QtGui.QWidget) :
 	self.ui.product_form.edit(item)
 
     def new (self) :
-	p = pharma.Product("novo produto", "fornecedor", 0.00, 0)
+	p = pharma.Product("novo produto", 0, 0.00, 0)
 	item = self._make_QTreeWidgetItem(p)
 
 	self.ui.product_index.addTopLevelItem(item)

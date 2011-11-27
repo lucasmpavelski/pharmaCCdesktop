@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'providerForm.ui'
 #
-# Created: Sat Nov 26 23:28:19 2011
+# Created: Sun Nov 27 10:13:26 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,6 +33,7 @@ class Ui_Form(object):
         self.name.setObjectName("name")
         self.formLayout.setWidget(1, QtGui.QFormLayout.FieldRole, self.name)
         self.id = QtGui.QLineEdit(Form)
+        self.id.setEnabled(False)
         self.id.setObjectName("id")
         self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.id)
         self.buttonBox = QtGui.QDialogButtonBox(Form)

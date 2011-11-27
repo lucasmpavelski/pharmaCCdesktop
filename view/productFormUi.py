@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'productForm.ui'
 #
-# Created: Sat Nov 26 23:28:18 2011
+# Created: Sun Nov 27 10:13:26 2011
 #      by: PyQt4 UI code generator 4.7.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -35,6 +35,7 @@ class Ui_Form(object):
         self.amountLabel.setObjectName("amountLabel")
         self.formLayout.setWidget(8, QtGui.QFormLayout.LabelRole, self.amountLabel)
         self.pidText = QtGui.QLineEdit(self.layoutWidget)
+        self.pidText.setEnabled(False)
         self.pidText.setObjectName("pidText")
         self.formLayout.setWidget(0, QtGui.QFormLayout.FieldRole, self.pidText)
         self.nameText = QtGui.QLineEdit(self.layoutWidget)
