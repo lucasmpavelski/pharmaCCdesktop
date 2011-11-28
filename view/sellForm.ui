@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTreeWidget" name="sells_form_top">
+    <widget class="QTreeWidget" name="store_products">
      <column>
       <property name="text">
        <string>Codigo</string>
@@ -34,11 +34,6 @@
      <column>
       <property name="text">
        <string>Quantidade</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Total</string>
       </property>
      </column>
     </widget>
@@ -62,7 +57,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTreeWidget" name="sells_form_button">
+    <widget class="QTreeWidget" name="sell_products">
      <column>
       <property name="text">
        <string>Codigo</string>
@@ -76,16 +71,6 @@
      <column>
       <property name="text">
        <string>Preco</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Quantidade</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Total</string>
       </property>
      </column>
     </widget>

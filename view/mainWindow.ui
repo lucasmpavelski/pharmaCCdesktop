@@ -25,39 +25,43 @@
         <property name="movable">
          <bool>true</bool>
         </property>
-        <widget class="QWidget" name="tab">
+        <widget class="QWidget" name="provider_tab">
          <attribute name="title">
           <string>Fornecedor</string>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="ProviderIndex" name="widget" native="true"/>
+           <widget class="ProviderIndex" name="provider_mng" native="true"/>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_2">
+        <widget class="QWidget" name="product_tab">
          <attribute name="title">
           <string>Produto</string>
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="ProductIndex" name="product_index" native="true"/>
+           <widget class="ProductIndex" name="product_mng" native="true"/>
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="tab_3">
+        <widget class="QWidget" name="sell_tab">
          <attribute name="title">
-          <string>Usuario</string>
+          <string>Vender</string>
          </attribute>
-         <layout class="QHBoxLayout" name="horizontalLayout"/>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="SellForm" name="new_sell" native="true"/>
+          </item>
+         </layout>
         </widget>
-        <widget class="QWidget" name="tab_4">
+        <widget class="QWidget" name="new_sell_tab">
          <attribute name="title">
           <string>Vendas</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="SellIndex" name="widget_2" native="true"/>
+           <widget class="SellIndex" name="sell_mng" native="true"/>
           </item>
          </layout>
         </widget>
@@ -73,7 +77,7 @@
      <x>0</x>
      <y>0</y>
      <width>716</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -97,8 +101,37 @@
    <extends>QWidget</extends>
    <header>sellIndex</header>
    <container>1</container>
+   <slots>
+    <slot>refresh()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>SellForm</class>
+   <extends>QWidget</extends>
+   <header>sellForm</header>
+   <container>1</container>
+   <slots>
+    <signal>sell_changed()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>new_sell</sender>
+   <signal>sell_changed()</signal>
+   <receiver>sell_mng</receiver>
+   <slot>refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>357</x>
+     <y>366</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>357</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

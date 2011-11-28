@@ -1,6 +1,6 @@
 #!/bin/sh
 
-compiler=pyuic4
+compiler=pykdeuic4
 
 $compiler -o mainWindowUi.py mainWindow.ui
 

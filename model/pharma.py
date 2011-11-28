@@ -19,9 +19,9 @@ class Record (object) :
 
   def save (self) :
     self.new = False
-    print "save " + self.who + " " + str(self.id)
     values = self._get_dict()
     db.insertInto(self.who, values)
+    print "save " + self.who + " " + str(self.id)
 
   def update (self) :
     when = self.__class__.id_field + " == " + str(self.id)
@@ -166,7 +166,7 @@ class SoldProduct (Record) :
       self.who = SoldProduct.who
 
       if id_sold_prod == None :
-        self.id = self.lastId("sold_product") + 1
+        self.id = self.lastId("id_sold_prod") + 1
       else :
         self.id = id_sold_prod
 
@@ -191,11 +191,9 @@ class Sell (Record) :
       self.who = Sell.who
 
       if id_sell == None :
-        self.id = self.lastId("sell") + 1
+        self.id = self.lastId("id_sell") + 1
       else :
         self.id = id_sell
-
-      self.id = id_sell
 
     def _get_dict (self) :
       return {"id_sell" : self.id}

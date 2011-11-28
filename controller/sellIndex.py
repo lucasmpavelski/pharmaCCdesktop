@@ -13,9 +13,7 @@ class SellIndex (QtGui.QWidget) :
         self.ui=Ui_Form()
         self.ui.setupUi(self)
 
-        for s in pharma.Sell.get_all() :
-            item = self._make_QTreeWidgetItem(s)
-            self.ui.sell_index.addTopLevelItem(item)
+        self.refresh()
 
     def _make_QTreeWidgetItem (self, s) :
         prods = s.products()
@@ -31,6 +29,16 @@ class SellIndex (QtGui.QWidget) :
         item.addChildren(prod_items)
         item.sell = s
         return item
+
+    def refresh (self) :
+        print "yey"
+        si = self.ui.sell_index
+        for i in range(si.topLevelItemCount()) :
+             si.takeTopLevelItem(0)
+        #.takeChildren()
+        for s in pharma.Sell.get_all() :
+            item = self._make_QTreeWidgetItem(s)
+            self.ui.sell_index.addTopLevelItem(item)
  
     def _edit_on_form (self, item) :
         pass

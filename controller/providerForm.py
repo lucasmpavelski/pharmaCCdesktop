@@ -40,7 +40,6 @@ class ProviderForm (QtGui.QWidget) :
           self.item.setText(1, self.item.provider.name)
           self.item.setText(2, self.item.provider.phone)
 
-
         self.hide()
 
     def reloadRow (self) :
