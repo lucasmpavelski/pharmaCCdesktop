@@ -1,1 +1,1 @@
-<?xml version="1.0" ?><table><name>sell</name><columns><column id="0" name="id_sell" type="int"/></columns><data><row id_sell="0"/><row id_sell="1"/><row id_sell="2"/></data></table>
+<?xml version="1.0" ?><table><name>sell</name><columns><column id="0" name="id_sell" type="int"/></columns><data><row id_sell="1"/><row id_sell="2"/></data></table>

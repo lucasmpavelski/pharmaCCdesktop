@@ -19,19 +19,19 @@ class Record (object) :
 
   def save (self) :
     self.new = False
-    print "save " + self.who + " " + self.name
+    print "save " + self.who + " " + str(self.id)
     values = self._get_dict()
     db.insertInto(self.who, values)
 
   def update (self) :
     when = self.__class__.id_field + " == " + str(self.id)
     db.update(self.who, when, self._get_dict())
-    print "update " + self.who + " " + self.name
+    print "update " + self.who + " " + str(self.id)
 
   def remove (self) :
     when = self.__class__.id_field + " == " + str(self.id)
     db.deleteFrom(self.who, when)
-    print "delete " + self.who + " " + self.name
+    print "delete " + self.who + " " + str(self.id)
 
   def getAll (self) :
     return db.fromTables([self.who]).data
@@ -56,6 +56,15 @@ class Record (object) :
       return cls(**row[0])
     else :
       return None
+
+  @classmethod
+  def where (cls, qry) :
+    rows = db.fromTables([cls.who]).where(qry)
+    r = []
+    for row in rows.data :
+      row.update({'isNew': False})
+      r.append(cls(**row))
+    return r 
 
 
 class Product (Record) :
@@ -156,18 +165,18 @@ class SoldProduct (Record) :
       self.new = isNew
       self.who = SoldProduct.who
 
-      if sold_prod_id == None :
+      if id_sold_prod == None :
         self.id = self.lastId("sold_product") + 1
       else :
-        self.id = sold_prod_id
+        self.id = id_sold_prod
 
       self.prod = id_prod_sold_prod
-      self.sell = id_prod_sold_prod
+      self.sell = id_sell_sold_prod
 
     def _get_dict (self) :
       return {"id_sold_prod"      : self.id,
-              "id_prod_sold_prod" : self.id_prod,
-              "id_sell_sold_prod" : self.id_sell}
+              "id_prod_sold_prod" : self.prod,
+              "id_sell_sold_prod" : self.sell}
       
       
 class Sell (Record) :
@@ -197,6 +206,13 @@ class Sell (Record) :
       for row in rows :
         r.append(Product.find(row['id_prod_sold_prod']))
       return r
+
+    def remove_product (self, pid) :
+      rows = db.deleteFrom("sold_product", 
+          "id_sell_sold_prod == " + str(self.id) + " and id_prod_sold_prod == " + str(pid))
+
+    def remove_products (self) :
+      rows = db.deleteFrom("sold_product", "id_sell_sold_prod == " + str(self.id))
         
 def main() :
   print Provider.get_all()
