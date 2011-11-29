@@ -210,7 +210,9 @@ class Sell (Record) :
           "id_sell_sold_prod == " + str(self.id) + " and id_prod_sold_prod == " + str(pid))
 
     def remove_products (self) :
-      rows = db.deleteFrom("sold_product", "id_sell_sold_prod == " + str(self.id))
+      rows = db.fromTables(["sold_product"]).where("id_sell_sold_prod == " + str(self.id)).select(['id_sold_prod'])
+      for row in rows :
+        rows = db.deleteFrom("sold_product", "id_sold_prod == " + str(row['id_sold_prod']))
         
 def main() :
   print Provider.get_all()

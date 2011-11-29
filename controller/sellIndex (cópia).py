@@ -16,16 +16,13 @@ class SellIndex (QtGui.QWidget) :
         self.refresh()
 
     def _make_QTreeWidgetItem (self, s) :
-        sold_prods = pharma.SoldProduct.where("id_sell_sold_prod == " + str(s.id))
-
-        
+        prods = s.products()
         prod_items = []
         total = 0.0
-
-        for sp in sold_prods :
-          p = pharma.Product.find(sp.prod)
+        for p in prods :
           pitem = QtGui.QTreeWidgetItem([str(p.id), p.name, str(p.price)])
-          pitem.sold_product = sp
+          pitem.sold_product = pharma.SoldProduct.where("id_prod_sold_prod == " + str(p.id) + " and " +
+                                                        "id_sell_sold_prod == " + str(s.id))[0]
           prod_items.append(pitem)
           total = total + p.price
         item = QtGui.QTreeWidgetItem([str(s.id), "", str(total)])
