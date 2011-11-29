@@ -56,6 +56,12 @@ if not db.hasTable("product") :
              "price_prod" : 9.98      ,
              "amount_prod": 30        }
     db.insertInto("product", prod3)
+    prod4 = {"id_prod"    : 3         ,
+             "name_prod"  : u"cataflan" ,
+             "prov_prod"  : 3 ,
+             "price_prod" : 0.98      ,
+             "amount_prod": 20        }
+    db.insertInto("product", prod4)
 
 if not db.hasTable("sold_product") :
     sold_prodColumns = {"id_sold_prod": "int",

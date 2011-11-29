@@ -21,7 +21,7 @@ class Record (object) :
     self.new = False
     values = self._get_dict()
     db.insertInto(self.who, values)
-    print "save " + self.who + " " + str(self.id)
+    print "save " + self.who + " " + str(values)
 
   def update (self) :
     when = self.__class__.id_field + " == " + str(self.id)
@@ -31,7 +31,7 @@ class Record (object) :
   def remove (self) :
     when = self.__class__.id_field + " == " + str(self.id)
     db.deleteFrom(self.who, when)
-    print "delete " + self.who + " " + str(self.id)
+    print "delete " + self.who + " " + when
 
   def getAll (self) :
     return db.fromTables([self.who]).data

@@ -16,17 +16,19 @@ class SellForm (QtGui.QWidget) :
           self.ui.store_products.addTopLevelItem(self._make_QTreeStoreProduct(p))
 
 	self.sell = pharma.Sell()
+        self.sell.nproducts = 0
 
     def _make_QTreeStoreProduct (self, p) :
 	item = QtGui.QTreeWidgetItem([str(p.id), p.name,str(p.price), str(p.amount)])
 	item.product = p
 	return item
 
-        
     def _make_QTreeSellProduct (self, p) :
 	item = QtGui.QTreeWidgetItem([str(p.id), p.name, str(p.price)])
 	sp = pharma.SoldProduct(p.id, self.sell.id)
+        sp.id = sp.id + self.sell.nproducts
 	item.sold_product = sp
+        print "item " + str(sp.id) + " " + str(sp.prod)+ " "  + str(sp.sell)
 	return item
 
     def sell_changed(self) :
@@ -52,6 +54,7 @@ class SellForm (QtGui.QWidget) :
 
         prod = item.product
         self.ui.sell_products.addTopLevelItem(self._make_QTreeSellProduct(prod))
+        self.sell.nproducts = self.sell.nproducts + 1
 
     def remove (self) :
         item = self.ui.sell_products.currentItem()
